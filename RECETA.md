@@ -1,49 +1,99 @@
-# Receta: Ticket de compra
+Receta: Ticket de compra
 
-<!-- Escribe aquí tus recetas en pseudocódigo, ANTES de programar.
-     Primero la receta del programa principal (main) y después una receta corta para cada módulo que vas a escribir tú.
-     El primer paso de main es solo un ejemplo del formato; el resto es tuyo.
-     Si las corriges después de probarlas a mano, deja aquí la versión final. -->
+Receta del programa principal (main)
 
-## Receta del programa principal (`main`)
+1. MOSTRAR "=== SISTEMA DE VENTAS MECATRONICA ==="
+2. SOLICITAR el nombre del producto y guardarlo en nombre.
+3. SOLICITAR el precio unitario y guardarlo en precio.
+4. MIENTRAS precio sea menor o igual a 0:
+      MOSTRAR mensaje de error.
+      VOLVER A SOLICITAR el precio.
+5. SOLICITAR la cantidad de piezas y guardarla en cantidad.
+6. MIENTRAS cantidad sea menor o igual a 0:
+      MOSTRAR mensaje de error.
+      VOLVER A SOLICITAR la cantidad.
+7. SOLICITAR el porcentaje de descuento y guardarlo en descuento.
+8. MIENTRAS descuento sea menor que 0 o mayor que 99:
+      MOSTRAR mensaje de error.
+      VOLVER A SOLICITAR el descuento.
+9. CALCULAR subtotal utilizando precio y cantidad.
+10. CALCULAR montoDescuento utilizando subtotal y descuento.
+11. CALCULAR baseImponible restando el descuento al subtotal.
+12. CALCULAR iva utilizando baseImponible y la tasa del 16%.
+13. CALCULAR total sumando baseImponible e iva.
+14. LLAMAR al módulo imprimirTicket enviando:
+      nombre, cantidad, precio, subtotal,
+      montoDescuento, iva y total.
+15. FINALIZAR el programa.
 
-<!-- Debe leerse casi igual que tu árbol de análisis descendente (sección 6 del README). -->
+Recetas de los módulos
 
-```text
-1. MOSTRAR "Bienvenido a mi programa"
+calcularIVA
 
-```
-
-## Recetas de los módulos
-
-<!-- Para cada módulo: qué recibe, qué hace y qué devuelve. -->
-
-### `calcularIVA`
-
-```text
-MODULO calcularIVA(_____)
-
+MODULO calcularIVA(base, tasa)
+1. RECIBIR la base imponible y la tasa del IVA.
+2. MULTIPLICAR la base por la tasa.
+3. DIVIDIR el resultado entre 100.
+4. GUARDAR el resultado como IVA.
+5. DEVOLVER el IVA.
 FIN MODULO
-```
 
-### `imprimirTicket`
+imprimirTicket
 
-```text
-MODULO imprimirTicket(_____)
-
+MODULO imprimirTicket(nombre, cantidad, precio,
+                      subtotal, descuentoMonto, iva, total)
+1. RECIBIR los datos de la compra.
+2. MOSTRAR el título "TICKET DE VENTA MECATRÓNICA".
+3. MOSTRAR el nombre del producto.
+4. MOSTRAR el precio unitario.
+5. MOSTRAR la cantidad de piezas.
+6. MOSTRAR el subtotal.
+7. MOSTRAR el descuento aplicado.
+8. MOSTRAR el IVA.
+9. MOSTRAR una línea de separación.
+10. MOSTRAR el total a pagar.
+11. MOSTRAR "Gracias por su compra :)".
 FIN MODULO
-```
 
-### `calcularPorcentaje` (Fase 4)
+calcularPorcentaje (Fase 4)
 
-```text
-MODULO calcularPorcentaje(_____)
-
+MODULO calcularPorcentaje(cantidad, porcentaje)
+1. RECIBIR una cantidad y un porcentaje.
+2. MULTIPLICAR la cantidad por el porcentaje.
+3. DIVIDIR el resultado entre 100.
+4. GUARDAR el resultado.
+5. DEVOLVER el resultado.
 FIN MODULO
-```
 
-### Otros módulos que agregues (por ejemplo, para tu reto)
+Otros módulos que agregues
 
-```text
+calcularSubtotal
 
-```
+MODULO calcularSubtotal(precio, cantidad)
+1. RECIBIR el precio y la cantidad.
+2. MULTIPLICAR el precio por la cantidad.
+3. GUARDAR el resultado como subtotal.
+4. DEVOLVER el subtotal.
+FIN MODULO
+
+calcularDescuento
+
+MODULO calcularDescuento(subtotal, porcentaje)
+1. RECIBIR el subtotal y el porcentaje de descuento.
+2. MULTIPLICAR el subtotal por el porcentaje.
+3. DIVIDIR el resultado entre 100.
+4. GUARDAR el resultado como monto del descuento.
+5. DEVOLVER el monto del descuento.
+FIN MODULO
+
+imprimirTicketImpl
+
+MODULO imprimirTicketImpl(nombre, cantidad, precio,
+                           subtotal, descuentoMonto, iva, total)
+1. RECIBIR todos los datos de la compra.
+2. MOSTRAR el título del ticket.
+3. MOSTRAR los datos del producto.
+4. MOSTRAR los importes calculados.
+5. MOSTRAR el total de la compra.
+6. MOSTRAR el mensaje de agradecimiento.
+FIN MODULO
